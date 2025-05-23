@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h2 class="text-center"> Lista de pedidos</h2>
+
+            
+    <div class="table-responsive border rounded-3">
+        <table class="table align-middle table table-striped table-hover">
+            <thead>
+                <tr>
+                <th scope="col" class="d-none d-sm-table-cell">ID</th>
+                <th scope="col">Cliente</th>
+                <th scope="col">Articulo</th>
+                <th scope="col">Cantidad</th>
+                <th scope="col">Fecha</th>                
+                </tr>
+            </thead>
+            <tbody>
+                {% for pedido in pedidos %}
+                    <tr>
+                    <th class="d-none d-sm-table-cell" scope="row">{{ pedido.id_pedido }}</th>
+                    <td>{{ pedido.codigoCliente }}</td>
+                    <td >{{ pedido.codigo_articulo}}</td>
+                    <td >{{ pedido.cantidad}}</td>
+                    <td>{{ pedido.fecha_pedido }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}

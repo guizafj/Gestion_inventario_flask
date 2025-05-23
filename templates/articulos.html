@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h2 class="text-center"> Lista de articulos</h2>
+
+            
+    <div class="table-responsive border rounded-3">
+        <table class="table align-middle table table-striped table-hover">
+            <thead>
+                <tr>
+                <th scope="col" class="d-none d-sm-table-cell">Codigo</th>
+                <th scope="col">Seccion</th>
+                <th scope="col">Nombre</th>
+                <th scope="col">Precio</th>
+                <th scope="col" class="d-none d-sm-table-cell">Fecha</th>
+                <th scope="col" class="d-none d-sm-table-cell">Importado</th>
+                <th scope="col">Origen</th>
+                <th scope="col" class="d-none d-sm-table-cell">Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for articulo in articulos %}
+                    <tr>
+                    <th class="d-none d-sm-table-cell" scope="row">{{ articulo.codigo_articulo }}</th>
+                    <td>{{ articulo.seccion }}</td>
+                    <td>{{ articulo.nombre_articulo}}</td>
+                    <td >{{ articulo.precio}}</td>
+                    <td class="d-none d-sm-table-cell">{{ articulo.fecha }}</td>
+                    <td class="d-none d-sm-table-cell">{{ articulo.importado }}</td>
+                    <td>{{ articulo.pais_origen}}</td>
+                    <td><div>
+                    <!-- Botón para editar -->
+                    <a href="{{ url_for('articulos.editar_articulo', codigo_articulo=articulo.codigo_articulo) }}" class="btn btn-primary btn-sm">Editar <i class="bi bi-pencil"></i></a>
+                     <!-- Formulario para eliminar -->
+                    <form method="POST" action="{{ url_for('articulos.eliminar_articulo', codigo_articulo=articulo.codigo_articulo) }}" style="display:inline;">
+                        <button type="submit" class="btn btn-danger btn-sm btn-eliminar" data-codigo_articulo="{{ articulo.codigo_articulo }}">Eliminar <i class="bi bi-trash"></i></button>
+                    </form>
+                    </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}

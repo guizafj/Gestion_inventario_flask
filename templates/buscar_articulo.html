@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2>Resultados de la búsqueda</h2>
+    {% if articulos %}
+        <p>Resultados para: <strong>{{ termino }}</strong></p>
+        <ul class="list-group">
+            {% for articulo in articulos %}
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    <div>
+                        <strong>{{ articulo.nombre_articulo }}</strong> - {{ articulo.seccion}} {{ articulo.precio }}
+                    </div>                
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p class="text-danger">No se encontraron resultados para: <strong>{{ termino }}</strong> <i class="bi bi-exclamation-triangle"></i></p>
+    {% endif %}
+</div>
+{% endblock %}

@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2>Editar Articulo</h2>
+    <form method="POST" action="{{ url_for('articulos.editar_articulo', codigo_articulo=articulo.codigo_articulo) }}">
+        {{ form.hidden_tag() }}
+        <div class="mb-3">
+            <label for="codigo_articulo" class="form-label">Codigo</label>
+            {{ form.codigo_articulo(class="form-control") }}
+            {% for error in form.codigo_articulo.errors %}
+                <small class="text-danger">{{ error }}</small>
+            {% endfor %}
+        </div>
+        <div class="mb-3">
+            <label for="seccion" class="form-label">Seccion</label>
+            {{ form.seccion(class="form-control") }}
+            {% for error in form.seccion.errors %}
+                <small class="text-danger">{{ error }}</small>
+            {% endfor %}
+        </div>
+        <div class="mb-3">
+            <label for="nombre_articulo" class="form-label">Nombre</label>
+            {{ form.nombre_articulo(class="form-control") }}
+            {% for error in form.nombre_articulo.errors %}
+                <small class="text-danger">{{ error }}</small>
+            {% endfor %}
+        </div>
+        <div class="mb-3">
+            <label for="precio" class="form-label">Precio</label>
+            {{ form.precio(class="form-control") }}
+            {% for error in form.precio.errors %}
+                <small class="text-danger">{{ error }}</small>
+            {% endfor %}
+        </div>
+        <div class="mb-3">
+            <label for="importado" class="form-label">Importado</label>
+            {{ form.importado(class="form-control") }}
+            {% for error in form.importado.errors %}
+                <small class="text-danger">{{ error }}</small>
+            {% endfor %}
+        </div>
+        <div class="mb-3">
+            <label for="pais_origen" class="form-label">Pais</label>
+            {{ form.pais_origen(class="form-control") }}
+            {% for error in form.pais_origen.errors %}
+                <small class="text-danger">{{ error }}</small>
+            {% endfor %}
+        </div>
+        <button type="submit" class="btn btn-primary">{{ form.submit.label }}</button>
+        <a href="{{ url_for('articulos.articulos_lista') }}" class="btn btn-secondary">Cancelar</a>
+    </form>
+</div>
+{% endblock %}

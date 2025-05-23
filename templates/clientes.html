@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h2 class="text-center"> Lista de clientes</h2>
+
+            
+    <div class="table-responsive border rounded-3">
+        <table class="table align-middle table table-striped table-hover">
+            <thead>
+                <tr>
+                <th scope="col" class="d-none d-sm-table-cell">Codigo</th>
+                <th scope="col">Empresa</th>
+                <th scope="col"  class="d-none d-sm-table-cell">Direccion</th>
+                <th scope="col">Poblacion</th>
+                <th scope="col">Telefono</th>
+                <th scope="col" >Responsable</th>
+                <th scope="col" class="d-none d-sm-table-cell">Historial</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for cliente in clientes %}
+                    <tr>
+                    <th class="d-none d-sm-table-cell" scope="row">{{ cliente.codigoCliente}}</th>
+                    <td>{{ cliente.empresa }}</td>
+                    <td class="d-none d-sm-table-cell">{{ cliente.direccion}}</td>
+                    <td >{{ cliente.poblacion}}</td>
+                    <td>{{ cliente.telefono }}</td>
+                    <td>{{ cliente.responsable }}</td>
+                    <td class="d-none d-sm-table-cell">{{ cliente.historial}}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}
